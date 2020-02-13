@@ -6,138 +6,236 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="18dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:padding="8dp">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_post"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
-            app:cardCornerRadius="5dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="time, a concept"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="200dp"
+            android:layout_height="4dp"
+            android:background="#E07B00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="400dp"
+            android:layout_height="4dp"
+            android:background="#ED1C24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize">
 
-                <ImageView
-                    android:id="@+id/imageViewPostPicture"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_post"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="Post picture"
-                    android:cropToPadding="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img" />
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:elevation="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@drawable/gradient_shape"
-                    android:padding="20dp"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewPostPicture"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="0dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="600dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textSeconds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="00 seconds"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textMinutes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="00 minutes"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textSeconds"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textHours"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="00 hours"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textMinutes"
-                        app:layout_constraintStart_toStartOf="parent" />
-                    "
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textDays"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="00 days"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textHours"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textMonths"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="00 months"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textDays"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textYears"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="00 years"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textMonths"
-                        app:layout_constraintStart_toStartOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/imageViewSlideshow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="Slide Show"
+                            android:cropToPadding="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/i_m_0" />
 
 
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@drawable/gradient_shape"
+                            android:padding="20dp"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageViewSlideshow"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:layout_editor_absoluteX="0dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/materialTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:text="a collection of memories"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="on a spring day we met and instantly started creating memories. I only wish to create a million more.\n\n - s"
+                                android:textColor="#FFFFFF"
+                                android:textSize="18sp"
+                                app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+                                tools:layout_editor_absoluteX="20dp" />
+
+                            <TextView
+                                android:id="@+id/textSeconds"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="00 seconds"
+                                android:textColor="#ffffff"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textMinutes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="00 minutes"
+                                android:textColor="#ffffff"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toTopOf="@+id/textSeconds"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textHours"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="00 hours"
+                                android:textColor="#ffffff"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toTopOf="@+id/textMinutes"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textDays"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="00 days"
+                                android:textColor="#ffffff"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toTopOf="@+id/textHours"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textMonths"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="00 months"
+                                android:textColor="#ffffff"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toTopOf="@+id/textDays"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textYears"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="00 years"
+                                android:textColor="#ffffff"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toTopOf="@+id/textMonths"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutSpotify"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/layout_border">
 
-        </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="oh, and i made a playlist of the songs we enjoyed together, just tap this"
+                    android:textColor="#1ED760"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/spotify"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
