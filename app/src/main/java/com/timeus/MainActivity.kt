@@ -5,10 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.firebase.firestore.FirebaseFirestore
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Month
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     var duration: LocalDateTime? = null
     var imageSlideShow: ImageView? = null
     var layoutSpotify: ConstraintLayout? = null
+    var buttonDiary: ImageButton? = null
+    var db: FirebaseFirestore? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         textSeconds = findViewById(R.id.textSeconds)
         imageSlideShow = findViewById(R.id.imageViewSlideshow)
         layoutSpotify = findViewById(R.id.layoutSpotify)
+        buttonDiary = findViewById(R.id.buttonRefresh)
+        db = FirebaseFirestore.getInstance()
 
         setTexts()
         val handler = Handler()
@@ -81,6 +87,11 @@ class MainActivity : AppCompatActivity() {
                 handler.postDelayed(this, 6580)
             }
         })
+
+        buttonDiary!!.setOnClickListener {
+            val intent = Intent(this, DiaryActivity::class.java)
+            startActivity(intent)
+        }
 
         layoutSpotify!!.setOnClickListener {
             val url = "https://open.spotify.com/playlist/7elvgH5i5P69YcqvUHW1Xq"
