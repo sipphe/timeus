@@ -1,18 +1,16 @@
 package com.timeus.models
 
-import java.time.LocalDateTime
-
 
 class Diary : Comparable<Diary> {
     var id: String? = null
     var title: String? = null
     var content: String? = null
     var author: Author? = null
-    var time: LocalDateTime? = null
+    var time: String? = null
 
     constructor()
 
-    constructor(title: String?, content: String?, author: Author?, time: LocalDateTime) {
+    constructor(title: String?, content: String?, author: Author?, time: String?) {
         this.title = title
         this.content = content
         this.author = author
@@ -20,7 +18,7 @@ class Diary : Comparable<Diary> {
     }
 
     override fun compareTo(o: Diary): Int {
-        return time!!.compareTo(o.time)
+        return time!!.compareTo(o.time!!)
     }
 
 

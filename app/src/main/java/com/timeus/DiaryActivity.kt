@@ -65,7 +65,7 @@ class DiaryActivity : AppCompatActivity() {
                             "annie",
                             "https://firebasestorage.googleapis.com/v0/b/united-bebop-229508.appspot.com/o/user_pic%2F84767166_2715808015161972_8470366344611627008_o.jpg?alt=media&token=7b12311d-47a3-4e1f-b930-849466703c1d"
                         ),
-                        LocalDateTime.now()
+                        LocalDateTime.now().toString()
                     )
                     db!!.collection("diaries").document().set(newDiary).addOnSuccessListener {
                         dialogView.progressBar.visibility = View.INVISIBLE
@@ -85,6 +85,7 @@ class DiaryActivity : AppCompatActivity() {
                         "check your connection, jy",
                         Snackbar.LENGTH_LONG
                     )
+                    dialogView.progressBar.visibility = View.INVISIBLE
                 }
             }
             dialogView.buttonCancel.setOnClickListener {
@@ -107,7 +108,7 @@ class DiaryActivity : AppCompatActivity() {
                     var diary = document.toObject(Diary::class.java)
                     diaryList.add(0, diary)
                 }
-                diaryList.sort()
+                diaryList.sortDescending()
                 (recyclerDiaries?.adapter as DiaryListAdapter).notifyDataSetChanged()
             }
         } else {
